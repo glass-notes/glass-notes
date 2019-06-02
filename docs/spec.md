@@ -154,12 +154,16 @@ All fields are mandatory except through marked by `?` (nullable). `FK` stands fo
   ↳ last_name: String
   ↳ email: String
   ↳ github_username: String
+```
 
+```
 → Session
   ↳ id: Long, Automatic, FINAL
   ↳ uuid: String, UUID, FINAL
   ↳ user_id: Long, FK=User, FINAL
+```
   
+```
 → Document
   ↳ id: Long, Automatic, FINAL
   ↳ uuid: String, UUID, FINAL
@@ -194,14 +198,17 @@ Endpoints are marked with certain flags:
     ⇠ id
   ↳ 🔐 GET /users/<ID>/
     ⇠ User, all fields
-    
+```
 
+```
 → Sessions
 
   ↳ 🔐 GET /users/<ID>/session/
     Gets the active session key or creates a new one
     ⇠ Session, all fields
-  
+```
+
+```
 → Documents
 
   ↳ 🔐🔑 GET /documents/
@@ -224,7 +231,7 @@ Endpoints are marked with certain flags:
       ⇠ github_latest_commit_hash
 ```
 
-All endpoints return:
+All endpoints return the following HTTP status codes:
 - `200` (fetches)
 - `201` (creates)
 - `300` (client-responsible validation error)
@@ -244,7 +251,7 @@ Glass targets API level 19 of the Android SDK. A Google Glass and companion Andr
 
 #### ▶▶▶ RESTful API
 
-We'll be using a Python-based, Django REST Framework application to serve our API. We'll be utilizing a PostgreSQL database. The package `PyGitHub` will be used to communicate from Python to GitHub's API. The 
+We'll be using a Python-based, Django REST Framework application to serve our API. We'll be utilizing a PostgreSQL database. The package `PyGitHub` will be used to communicate from Python to GitHub's API. The `src/GitNotesAPI` directory will contain the API. We'll be using Python 3.6 because of it's support of type-annotations and type-linting. Tests will be written.
 
 ## ▶ Deployment
 
@@ -254,7 +261,7 @@ We'll be spinning up a local Docker swarm using `docker-compose`.
 
 ### ▶▶ Cloud
 
-The RESTful API will be deployed to Heroku. The API will be available to the public Internet under `https://git-notes.p13i.app/api/`.
+The RESTful API will be deployed to Heroku or Docker Cloud. The API will be available to the public Internet under `https://git-notes.p13i.app/api/` standard TCP/IP ports `:80` (HTTP) and `:443` (HTTPS).
 
 ---
 
