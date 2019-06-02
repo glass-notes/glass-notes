@@ -63,6 +63,55 @@ Design for the user. That's the most important, and first, stage of all projects
 
 Let's focus on the core aspects for now. The canvas is 640x320, the display size of Google Glass, Explorer Edition (XE).
 
+There will be three screens in this workflow:
+
+1. **Session start**: Camera screen to scan QR representing the active session
+2. **Document select**: List of all available documents and a button to create a new document
+3. **Document edit**: The document editor
+
+### ▶▶ 1) Session start
+
+
+```
+------------------------------------------------------------------
+|  Start session       Now: Sun, Jun 2, 1:30pm       ↗ Help      |
+|----------------------------------------------------------------|
+|                                                                |
+|                                                                |
+|                                                                |
+|                ACTIVE CAMERA                                   |
+|                with QR CODE BOUNDING BOX                       |
+|                                                                |
+|                                                                |
+|                                                                |
+|----------------------------------------------------------------|
+|  ← Save and exit   |  Last sync:  Sun, Jun 2, 1:31pm (40s) ✓   |  
+------------------------------------------------------------------
+```
+
+
+### ▶▶ 2) Document select
+
+
+```
+------------------------------------------------------------------
+|  Select document       Now: Sun, Jun 2, 1:30pm     ↗ Logout    |
+|----------------------------------------------------------------|
+|  Create new →                                                  |
+|                                                                |
+|  Open existing:                                                |
+|  - 2019-05-28.md  ... Lorem ipsum dolor sit amet, consectetur  |
+|  - 2019-05-31.md  ... Lorem ipsum dolor sit amet, consectetur  |
+|  - 2019-06-02.md  ... Lorem ipsum dolor sit amet, consectetur  |
+|                                                                |
+|                                                                |
+|----------------------------------------------------------------|
+|  ← Save and exit   |  Last sync:  Sun, Jun 2, 1:31pm (40s) ✓   |  
+------------------------------------------------------------------
+```
+
+### ▶▶ 3) Document edit
+
 ```
 ------------------------------------------------------------------
 |  ➤➤➤ 2019-02-02.md     Now: Sun, Jun 2, 1:32pm     ↗ New note  |
