@@ -61,7 +61,7 @@ Design for the user. That's the most important, and first, stage of all projects
 
 ## ▶ User interface
 
-Let's focus on the core aspects for now. The canvas is 640x320, the display size of Google Glass, Explorer Edition (XE).
+Let's focus on the core aspects for now. The canvas is`640 x 320` (`width x height`), the display size of Google Glass, Explorer Edition (XE).
 
 There will be three screens in this workflow:
 
@@ -78,14 +78,14 @@ There will be three screens in this workflow:
 |----------------------------------------------------------------|
 |                                                                |
 |                                                                |
-|                                                                |
+|                LOG IN TO git-notes                             |
 |                ACTIVE CAMERA                                   |
 |                with QR CODE BOUNDING BOX                       |
 |                                                                |
 |                                                                |
 |                                                                |
 |----------------------------------------------------------------|
-|  ← Save and exit   |  Last sync:  Sun, Jun 2, 1:31pm (40s) ✓   |  
+|  → On your phone/laptop, visit http://git-notes.p13i.io/QR/    |  
 ------------------------------------------------------------------
 ```
 
@@ -95,18 +95,18 @@ There will be three screens in this workflow:
 
 ```
 ------------------------------------------------------------------
-|  Select document       Now: Sun, Jun 2, 1:30pm     ↗ Logout    |
+|  Select document       Now: Sun, Jun 2, 1:30pm     ↗ Help      |
 |----------------------------------------------------------------|
-|  Create new →                                                  |
+|  Create new note    →                                          |
+|  Add new TODO       →                                          |
 |                                                                |
 |  Open existing:                                                |
 |  - 2019-05-28.md  ... Lorem ipsum dolor sit amet, consectetur  |
 |  - 2019-05-31.md  ... Lorem ipsum dolor sit amet, consectetur  |
 |  - 2019-06-02.md  ... Lorem ipsum dolor sit amet, consectetur  |
 |                                                                |
-|                                                                |
 |----------------------------------------------------------------|
-|  ← Save and exit   |  Last sync:  Sun, Jun 2, 1:31pm (40s) ✓   |  
+|  ← Logout                                                      |  
 ------------------------------------------------------------------
 ```
 
@@ -114,7 +114,7 @@ There will be three screens in this workflow:
 
 ```
 ------------------------------------------------------------------
-|  ➤➤➤ 2019-02-02.md     Now: Sun, Jun 2, 1:32pm     ↗ New note  |
+|  ➤➤➤ 2019-02-02.md     Now: Sun, Jun 2, 1:32pm     ↗ Help      |
 |----------------------------------------------------------------|
 |  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  |
 |  do eiusmod tempor incididunt ut labore:                       |
@@ -175,18 +175,19 @@ All fields are mandatory except through marked by `?` (nullable). `FK` stands fo
 
 ### ▶▶ Our RESTful API design
 
-```
 Endpoints are marked with certain flags:
 - 🔐🔐 are only available to super-users
 - 🔐 are only available to logged in users, determined by session cookies managed by the API framework
 - 🔑 require a Session uuid AND limit access to only that User's data, managed by this API
 - 🌏 are public, no authentication needed
 
+```
 → User
 
   ↳ 🔐🔐 GET /users/
     ⇠ List of User, all fields
   ↳ 🌏 POST /users/
+    Used to create a user account
     ⇢ first name
     ⇢ last name
     ⇢ email address
@@ -223,6 +224,16 @@ Endpoints are marked with certain flags:
       ⇠ last_revision_datetime
       ⇠ github_latest_commit_hash
 ```
+
+All endpoints return:
+- `200` (fetches)
+- `201` (creates)
+- `300` (client-responsible validation error)
+- `500` (server error)
+
+## ▶ Development
+
+Clean, well-documented code is expected. Tools like Docker and Vagrant will be used and documented for easy reproduction of development environment. No excuses for this.
 
 ---
 
