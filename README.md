@@ -1,6 +1,11 @@
 # git-notes
 Take notes on Google Glass for classes, conversations, and TODOs - syncs to Github
 
+## ▶ Elevator Pitch
+
+When we students are in class, generally we can focus on taking detailed notes for later or on gaining an in-depth understanding now; almost never can we do both at the same time. We pay hundreds of thousands of dollars for access to these top notch Professors and researchers, yet we'll end up forgetting most of what they tell us. How can we both take good notes and gain that in-depth understanding? We can create a system that displays your digital notes next to your physical lecturer. Heads-up displays (HUDs), like Google Glass, allows us to do this by augmenting our vision of the real world with relevant information from internet. This projects allows students to take notes in a seemless and useful way to gain understanding and depth while saving their precious notes online where they can always find it.
+
+
 ## ▶ Vision
 
 Imagine taking detailed notes in class while staying engaged with the material discussed.
@@ -85,7 +90,7 @@ There will be three screens in this workflow:
 |                                                                |
 |                                                                |
 |----------------------------------------------------------------|
-|  → On your phone/laptop, visit http://git-notes.p13i.io/QR/    |  
+|  → On your phone/laptop, visit http://git-notes.p13i.app/QR/   |  
 ------------------------------------------------------------------
 ```
 
