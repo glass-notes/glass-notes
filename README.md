@@ -231,9 +231,31 @@ All endpoints return:
 - `300` (client-responsible validation error)
 - `500` (server error)
 
+Data is transferred as JSON, using the `_` characters, for simplicity.
+
 ## ▶ Development
 
-Clean, well-documented code is expected. Tools like Docker and Vagrant will be used and documented for easy reproduction of development environment. No excuses for this.
+Clean, well-documented code is expected. Tools like Docker and Vagrant will be used and documented for easy reproduction of development environment. No excuses for this. Code *will* remain open-source and documented.
+
+### ▶▶ Implementation
+
+#### ▶▶▶ Google Glass
+
+Glass targets API level 19 of the Android SDK. A Google Glass and companion Android mobile application will be published under the `src/GitNotesAndroid` directory.
+
+#### ▶▶▶ RESTful API
+
+We'll be using a Python-based, Django REST Framework application to serve our API. We'll be utilizing a PostgreSQL database. The package `PyGitHub` will be used to communicate from Python to GitHub's API. The 
+
+## ▶ Deployment
+
+### ▶▶ Local
+
+We'll be spinning up a local Docker swarm using `docker-compose`.
+
+### ▶▶ Cloud
+
+The RESTful API will be deployed to Heroku. The API will be available to the public Internet under `https://git-notes.p13i.app/api/`.
 
 ---
 
