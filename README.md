@@ -25,7 +25,33 @@ There are a few main problems this project tackles head-on:
 
 2. **Incremental and frequent notes saved to a Git repository.** . 
     Git is great! We leverage Git for committing incremental changes to notes and syncing them to a Git repository of your choosing!
-    
+
+## Design
+
+Design for the user. That's the most important, and first, stage of all projects.
+
+### User requirements
+
+#### Core aspects
+
+- The note I'm taking
+- Where in the document my cursor is (flashing)
+- The current scroll location I am in the document
+- The current time
+- When the last sync was performed with Github
+- Visually, if there's an error (check mark or cross)
+- A way to manually trigger a save
+- Navigating to another document or creating a new document (automatically timestamped for the title for now)
+
+#### Nice-to-haves
+
+- A way to toggle between the final rendered Markdown and editing environment
+- A way to add pictures/video/audio from the Glass camera into the app and embed into the Markdown document as HTML or Markdown syntax
+- A way to manage branching and folders as usful for note-taking, perhaps per the colaborator editing the document
+- A short-link to access the notes online
+- A way to edit the same document online, enabling multi-person collaboration
+- A way to managing merging for versions of the same document online
+
 ---
 
 Pramod Kotipalli  
