@@ -42,6 +42,7 @@ Design for the user. That's the most important, and first, stage of all projects
 - Visually, if there's an error (check mark or cross)
 - A way to manually trigger a save
 - Navigating to another document or creating a new document (automatically timestamped for the title for now)
+- Saving the document to the local disk if a sync is not possible or has failed
 
 #### ▶▶▶ Nice-to-haves
 
@@ -55,6 +56,8 @@ Design for the user. That's the most important, and first, stage of all projects
 - Type hints from prior notes
 - Show prior, relevant notes online
 - Remeberance agent
+- Scan a QR code to open up a particular notes file
+- Ability to create a 'session' for a logged in user by signing in online/through an app and showing a QR code to Glass
 
 ## ▶ User interface
 
@@ -78,6 +81,17 @@ Let's focus on the core aspects for now. The canvas is 640x320, the display size
 |  ← Save and exit   |  Last sync:  Sun, Jun 2, 1:31pm (40s) ✓   |  
 ------------------------------------------------------------------
 ```
+
+## ▶ System architecture
+
+The running, functional system includes these computers:
+
+1. Google Glass
+2. A thin RESTful API that simplifies interaction with the VCS (version control system)
+3. GitHub servers storing the saved documents
+
+Essentially, Github will be used as a database for storing all these documents since it provides an incremental update system that's simple and easy to use. No need to implement a collaborative system like Google Docs.
+
 
 ---
 
