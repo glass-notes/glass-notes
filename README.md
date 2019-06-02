@@ -4,7 +4,7 @@ Take notes on Google Glass for classes, conversations, and TODOs - syncs to Gith
 
 ## Documentation
 
-Please see the detailed design specification: [`spec.md`](./docs/spec).
+Please see the detailed design specification: [`docs/spec.md`](./docs/spec.md).
 
 ## Redistribution
 
