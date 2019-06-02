@@ -75,7 +75,7 @@ Let's focus on the core aspects for now. The canvas is 640x320, the display size
 |                                                                |
 |  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  |
 |  do eiusmod tempor incididunt ut labore:                       |
-|    1. $$ \dfrac{1}{2}                                          |
+|    1. $$ \dfrac{1}{2} $$                                       |
 |                                                                |
 |----------------------------------------------------------------|
 |  ← Save and exit   |  Last sync:  Sun, Jun 2, 1:31pm (40s) ✓   |  
@@ -129,7 +129,8 @@ All fields are mandatory except through marked by `?` (nullable). `FK` stands fo
 ```
 Endpoints are marked with certain flags:
 - 🔐🔐 are only available to super-users
-- 🔐 require a Session uuid AND limit access to only that User's data
+- 🔐 are only available to logged in users, determined by session cookies managed by the API framework
+- 🔑 require a Session uuid AND limit access to only that User's data, managed by this API
 - 🌏 are public, no authentication needed
 
 → User
@@ -154,20 +155,20 @@ Endpoints are marked with certain flags:
   
 → Documents
 
-  ↳ 🔐 GET /documents/
+  ↳ 🔐🔑 GET /documents/
     Lists all document IDs and filenames for the given user
     ⇠ List of Document, fields:
       ⇠ id
       ⇠ uuid
       ⇠ filename
       ⇠ character_count: Integer, COMPUTED
-  ↳ 🔐 GET /documents/<ID>/
+  ↳ 🔐🔑 GET /documents/<ID>/
     Gets the specified document
     ⇠ Document, all fields
-  ↳ 🔐 POST /documents/
+  ↳ 🔐🔑 POST /documents/
     Creates a new document
     ⇠ Document, all fields
-  ↳ 🔐 PATCH /documents/<ID>/
+  ↳ 🔐🔑 PATCH /documents/<ID>/
     Submits a revision
     ⇠ Document, fields:
       ⇠ last_revision_datetime
