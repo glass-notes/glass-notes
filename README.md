@@ -51,6 +51,34 @@ Design for the user. That's the most important, and first, stage of all projects
 - A short-link to access the notes online
 - A way to edit the same document online, enabling multi-person collaboration
 - A way to managing merging for versions of the same document online
+- LaTeX support
+- Type hints from prior notes
+- Show prior, relevant notes online
+- Remeberance agent
+
+## User interface
+
+Let's focus on the core aspects for now. The canvas is 640x320, the display size of Google Glass, Explorer Edition (XE).
+
+```
+------------------------------------------------------------------
+|  ➤➤➤ 2019-02-02.md                                  Status: ✓  |
+|----------------------------------------------------------------|
+|  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  |
+|  do eiusmod tempor incididunt ut labore:                       |
+|    - do eiusmod tempor                                         |
+|    - incididunt ut labore                                      |
+|    - et dolore magna aliqua                                    |
+|                                                                |
+|  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  |
+|  do eiusmod tempor incididunt ut labore:                       |
+|    1. $$ \dfrac{1}{2}                                          |
+|                                                                |
+|----------------------------------------------------------------|
+|   ← Save and exit |   |  Now:        Sun, Jun 2, 1:32pm        |
+|   ↗ New note      | ✓ |  Last sync:  Sun, Jun 2, 1:31pm (40s)  |
+------------------------------------------------------------------
+```
 
 ---
 
