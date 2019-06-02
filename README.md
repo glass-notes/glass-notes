@@ -92,6 +92,35 @@ The running, functional system includes these computers:
 
 Essentially, Github will be used as a database for storing all these documents since it provides an incremental update system that's simple and easy to use. No need to implement a collaborative system like Google Docs.
 
+For now, we'll stick to Github gists to avoid dealing with Git repositories and folder structuring, later problems.
+
+### ▶▶ Our RESTful API design
+
+```
+
+→ User
+
+  ↳ GET /users/
+  ↳ POST /users/
+  ↳ GET /users/<ID>/
+
+→ Sessions
+
+  ↳ GET /users/<ID>/session/
+    Gets the active session key or creates a new one
+  
+→ Documents
+
+  ↳ GET /documents/
+    Lists all documents for the given user
+  ↳ GET /documents/<ID>/
+    Gets the specified document
+  ↳ POST /documents/
+    Creates a new document
+  ↳ PATCH /documents/<ID>/
+    Submits a revision
+
+```
 
 ---
 
