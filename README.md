@@ -94,30 +94,71 @@ Essentially, Github will be used as a database for storing all these documents s
 
 For now, we'll stick to Github gists to avoid dealing with Git repositories and folder structuring, later problems.
 
+### ▶▶ Database/API models
+
+```
+→ User
+  ↳ id
+  ↳ uuid
+  ↳ first name
+  ↳ last name
+  ↳ email address
+  ↳ github username
+
+→ Session
+  ↳ id
+  ↳ uuid
+  ↳ User uuid
+  
+→ Document
+  ↳ id
+  ↳ uuid
+  ↳ User uuid
+  ↳ create datetime
+  ↳ last revision datetime
+  ↳ GitHub gist id
+  ↳ GitHub latest commit id
+  ↳ GitHub gist filename
+  ↳ GitHub gist latest contents
+  
+```
+
 ### ▶▶ Our RESTful API design
 
 ```
 
+Endpoints are marked with certain flags:
+- 🔐🔐 are only available to super-users
+- 🔐 require a Session uuid AND limit access to only that User's data
+- 🌏 are public, no authentication needed
+
 → User
 
-  ↳ GET /users/
-  ↳ POST /users/
-  ↳ GET /users/<ID>/
+  ↳ 🔐🔐 GET /users/
+    ↜ list of User
+  ↳ 🌏 POST /users/
+    ⇢ first name
+    ⇢ last name
+    ⇢ email address
+    ⇢ github user
+    ⇠ id
+  ↳ 🔐 GET /users/<ID>/
+    
 
 → Sessions
 
-  ↳ GET /users/<ID>/session/
+  ↳ 🔐 GET /users/<ID>/session/
     Gets the active session key or creates a new one
   
 → Documents
 
-  ↳ GET /documents/
+  ↳ 🔐 GET /documents/
     Lists all documents for the given user
-  ↳ GET /documents/<ID>/
+  ↳ 🔐 GET /documents/<ID>/
     Gets the specified document
-  ↳ POST /documents/
+  ↳ 🔐 POST /documents/
     Creates a new document
-  ↳ PATCH /documents/<ID>/
+  ↳ 🔐 PATCH /documents/<ID>/
     Submits a revision
 
 ```
