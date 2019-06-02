@@ -96,37 +96,37 @@ For now, we'll stick to Github gists to avoid dealing with Git repositories and 
 
 ### ▶▶ Database/API models
 
+All fields are mandatory except through marked by `?` (nullable). `FK` stands for foriegn key. `FINAL` indicates that the field may not change after first being created.
+
 ```
 → User
-  ↳ id
-  ↳ uuid
-  ↳ first name
-  ↳ last name
-  ↳ email address
-  ↳ github username
+  ↳ id: Long, Automatic, FINAL
+  ↳ uuid: String, UUID, FINAL
+  ↳ first_name: String
+  ↳ last_name: String
+  ↳ email: String
+  ↳ github_username: String
 
 → Session
-  ↳ id
-  ↳ uuid
-  ↳ User uuid
+  ↳ id: Long, Automatic, FINAL
+  ↳ uuid: String, UUID, FINAL
+  ↳ user_id: Long, FK=User, FINAL
   
 → Document
-  ↳ id
-  ↳ uuid
-  ↳ User uuid
-  ↳ create datetime
-  ↳ last revision datetime
-  ↳ GitHub gist id
-  ↳ GitHub latest commit id
-  ↳ GitHub gist filename
-  ↳ GitHub gist latest contents
-  
+  ↳ id: Long, Automatic, FINAL
+  ↳ uuid: String, UUID, FINAL
+  ↳ user_id: Long, FK=User, FINAL
+  ↳ create_datetime: DateTime, Automatic, FINAL
+  ↳ last_revision_datetime: DateTime?
+  ↳ github_gist_id: String
+  ↳ github_latest_commit_hash: String
+  ↳ github_gist_filename: String
+  ↳ github_gist_latest_contents: Blob
 ```
 
 ### ▶▶ Our RESTful API design
 
 ```
-
 Endpoints are marked with certain flags:
 - 🔐🔐 are only available to super-users
 - 🔐 require a Session uuid AND limit access to only that User's data
@@ -135,7 +135,7 @@ Endpoints are marked with certain flags:
 → User
 
   ↳ 🔐🔐 GET /users/
-    ↜ list of User
+    ⇠ List of User, all fields
   ↳ 🌏 POST /users/
     ⇢ first name
     ⇢ last name
@@ -143,24 +143,35 @@ Endpoints are marked with certain flags:
     ⇢ github user
     ⇠ id
   ↳ 🔐 GET /users/<ID>/
+    ⇠ User, all fields
     
 
 → Sessions
 
   ↳ 🔐 GET /users/<ID>/session/
     Gets the active session key or creates a new one
+    ⇠ Session, all fields
   
 → Documents
 
   ↳ 🔐 GET /documents/
-    Lists all documents for the given user
+    Lists all document IDs and filenames for the given user
+    ⇠ List of Document, fields:
+      ⇠ id
+      ⇠ uuid
+      ⇠ filename
+      ⇠ character_count: Integer, COMPUTED
   ↳ 🔐 GET /documents/<ID>/
     Gets the specified document
+    ⇠ Document, all fields
   ↳ 🔐 POST /documents/
     Creates a new document
+    ⇠ Document, all fields
   ↳ 🔐 PATCH /documents/<ID>/
     Submits a revision
-
+    ⇠ Document, fields:
+      ⇠ last_revision_datetime
+      ⇠ github_latest_commit_hash
 ```
 
 ---
