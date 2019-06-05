@@ -29,6 +29,10 @@ There are a few main problems this project tackles head-on:
 
 Design for the user. That's the most important, and first, stage of all projects.
 
+### ▶▶ Input mechanism
+
+Glass is an Android device that can connect to Bluetooth-enabled keyboards. This is the primary input mechanism for the device.
+
 ### ▶▶ User requirements
 
 #### ▶▶▶ Core aspects
