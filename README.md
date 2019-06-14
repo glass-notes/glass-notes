@@ -1,6 +1,8 @@
-# glass-notes
+# glass-notes-design
 
 Take notes on Google Glass for classes, conversations, and TODOs - syncs to Github
+
+This repository houses the API and UI design specs
 
 ## Redistribution
 
